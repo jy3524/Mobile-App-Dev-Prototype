@@ -1,15 +1,15 @@
 import React from 'react';
-import {View, StyleSheet, Text, Button} from 'react-native';
+import {SafeAreaView, StyleSheet, Text, Button} from 'react-native';
 
 const HomeScreen = ({navigation}) => {
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <Text>Home Screen</Text>
       <Button
         title="Go to Product"
         onPress={() => navigation.navigate('ProductScreen')}
       />
-    </View>
+    </SafeAreaView>
   );
 };
 
