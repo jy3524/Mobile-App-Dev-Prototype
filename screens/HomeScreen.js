@@ -1,15 +1,16 @@
+// Images from Unsplash
 import React from 'react';
-import {SafeAreaView, StyleSheet, Text, Button} from 'react-native';
+import {View, StyleSheet, Text, TouchableOpacity, Image} from 'react-native';
 
 const HomeScreen = ({navigation}) => {
   return (
-    <SafeAreaView style={styles.container}>
-      <Text>Home Screen</Text>
-      <Button
-        title="Go to Product"
-        onPress={() => navigation.navigate('ProductScreen')}
-      />
-    </SafeAreaView>
+    <View style={styles.container}>
+      <TouchableOpacity onPress={() => navigation.navigate('ProductScreen')}>
+        <Image source={require('../assets/image1.jpg')} style={styles.image} />
+        <Text style={styles.text}>Home Screen</Text>
+      </TouchableOpacity>
+      <Image source={require('../assets/image2.jpg')} style={styles.image} />
+    </View>
   );
 };
 
@@ -18,8 +19,18 @@ export default HomeScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
     backgroundColor: '#cdd6b2',
+  },
+  image: {
+    width: '100%',
+    height: '90%',
+  },
+  text: {
+    position: 'absolute',
+    color: '#ffffff',
+    fontSize: 30,
+    fontFamily: 'futura-condensedExtraBold',
+    top: 325,
+    left: 110,
   },
 });

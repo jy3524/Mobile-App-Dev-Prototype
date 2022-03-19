@@ -8,21 +8,17 @@ import {
 } from 'react-native';
 import {Box, Button, NativeBaseProvider} from 'native-base';
 
-const ProductScreen = ({navigation}) => {
+const PurchaseScreen = ({navigation}) => {
   return (
     <SafeAreaView style={styles.container}>
       <TouchableOpacity onPress={() => navigation.navigate('HomeScreen')}>
         <Image source={require('../icons/cancel.png')} style={styles.cancel} />
       </TouchableOpacity>
-      <Text style={styles.text}>Product Screen</Text>
+      <Text style={styles.text}>Purchase Screen</Text>
       <NativeBaseProvider>
         <Box>
-          <Button
-            style={styles.button}
-            bg={'#d0b46b'}
-            width={200}
-            onPress={() => navigation.navigate('PurchaseScreen')}>
-            Purchase
+          <Button style={styles.button} bg={'#d0b46b'} width={200}>
+            Checkout
           </Button>
         </Box>
       </NativeBaseProvider>
@@ -30,7 +26,7 @@ const ProductScreen = ({navigation}) => {
   );
 };
 
-export default ProductScreen;
+export default PurchaseScreen;
 
 const styles = StyleSheet.create({
   container: {

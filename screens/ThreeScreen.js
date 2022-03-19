@@ -1,11 +1,20 @@
 import React from 'react';
-import {View, StyleSheet, Text} from 'react-native';
+import {
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  Image,
+} from 'react-native';
 
 const ThreeScreen = ({navigation}) => {
   return (
-    <View style={styles.container}>
-      <Text>3D Screen</Text>
-    </View>
+    <SafeAreaView style={styles.container}>
+      <TouchableOpacity onPress={() => navigation.navigate('HomeScreen')}>
+        <Image source={require('../icons/cancel.png')} style={styles.cancel} />
+      </TouchableOpacity>
+      <Text style={styles.text}>3D Screen</Text>
+    </SafeAreaView>
   );
 };
 
@@ -14,8 +23,17 @@ export default ThreeScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: 'flex-end',
+    justifyContent: 'flex-start',
     backgroundColor: '#cdd6b2',
+  },
+  cancel: {
+    marginRight: 25,
+    width: 25,
+    height: 25,
+  },
+  text: {
+    marginTop: 325,
+    marginRight: 160,
   },
 });
