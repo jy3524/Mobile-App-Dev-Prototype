@@ -14,13 +14,23 @@ const ProductScreen = ({navigation}) => {
       <TouchableOpacity onPress={() => navigation.navigate('HomeScreen')}>
         <Image source={require('../icons/cancel.png')} style={styles.cancel} />
       </TouchableOpacity>
-      <Text style={styles.text}>Product Screen</Text>
+      <Image source={require('../assets/tshirt0.jpg')} style={styles.image} />
+      <Text style={styles.title}>Basic T-shirt</Text>
+      <Text style={styles.price}>$45</Text>
+      <Text style={styles.text}>
+        This product was manufactured with ethically sourced cotton which was
+        grown without any pesticides or fertilizers in the US. We do not use any
+        chemicals to dye this product. We donate 5% of our total profit to
+        developing countries to eradicate all the sweatshops.
+      </Text>
       <NativeBaseProvider>
         <Box>
           <Button
-            style={styles.button}
+            alignSelf={'center'}
             bg={'#d0b46b'}
             width={200}
+            height={10}
+            marginTop={20}
             onPress={() => navigation.navigate('PurchaseScreen')}>
             Purchase
           </Button>
@@ -35,21 +45,31 @@ export default ProductScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'flex-end',
-    justifyContent: 'flex-start',
     backgroundColor: '#d8cdb2',
   },
   cancel: {
-    marginRight: 25,
+    marginLeft: 350,
+    marginBottom: 20,
     width: 25,
     height: 25,
   },
-  text: {
-    marginTop: 325,
-    marginRight: 145,
+  image: {
+    width: '100%',
+    height: 300,
   },
-  button: {
-    marginTop: 275,
-    marginRight: 95,
+  title: {
+    fontSize: 30,
+    fontFamily: 'futura-condensedExtraBold',
+    marginLeft: 120,
+    marginTop: 20,
+    marginBottom: 10,
+  },
+  price: {
+    fontFamily: 'futura-condensedExtraBold',
+    marginLeft: 180,
+  },
+  text: {
+    margin: 15,
+    fontFamily: 'futura',
   },
 });

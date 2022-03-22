@@ -15,11 +15,12 @@ const HomeScreen = ({navigation}) => {
       <ScrollView vertical={true}>
         <TouchableOpacity onPress={() => navigation.navigate('ProductScreen')}>
           <Image
-            source={require('../assets/image1.jpg')}
+            source={require('../assets/image0.jpg')}
             style={styles.image}
           />
-          <Text style={styles.text}>Home Screen</Text>
+          <Text style={styles.text}>Men's T-Shirt</Text>
         </TouchableOpacity>
+        <Image source={require('../assets/image1.jpg')} style={styles.image} />
         <Image source={require('../assets/image2.jpg')} style={styles.image} />
       </ScrollView>
     </View>
