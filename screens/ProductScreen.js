@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import {Box, Button, NativeBaseProvider} from 'native-base';
+import {productData} from '../database/productData';
 
 const ProductScreen = ({navigation}) => {
   return (
@@ -15,8 +16,8 @@ const ProductScreen = ({navigation}) => {
         <Image source={require('../icons/cancel.png')} style={styles.cancel} />
       </TouchableOpacity>
       <Image source={require('../assets/tshirt0.jpg')} style={styles.image} />
-      <Text style={styles.title}>Basic T-shirt</Text>
-      <Text style={styles.price}>$45</Text>
+      <Text style={styles.title}>{productData[0].name}</Text>
+      <Text style={styles.price}>{productData[0].price}</Text>
       <Text style={styles.text}>
         This product was manufactured with ethically sourced cotton which was
         grown without any pesticides or fertilizers in the US. We do not use any
@@ -60,7 +61,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 30,
     fontFamily: 'futura-condensedExtraBold',
-    marginLeft: 120,
+    marginLeft: 115,
     marginTop: 20,
     marginBottom: 10,
   },

@@ -14,11 +14,20 @@ const PurchaseScreen = ({navigation}) => {
       <TouchableOpacity onPress={() => navigation.navigate('HomeScreen')}>
         <Image source={require('../icons/cancel.png')} style={styles.cancel} />
       </TouchableOpacity>
-      <Text style={styles.text}>Purchase Screen</Text>
+      <Image source={require('../assets/tshirt2.jpg')} style={styles.image} />
+      <Text style={styles.title}>Basic T-shirt</Text>
+      <Text style={styles.price}>$45</Text>
+      <Text style={styles.text}>Size</Text>
       <NativeBaseProvider>
         <Box>
-          <Button style={styles.button} bg={'#d0b46b'} width={200}>
-            Checkout
+          <Button
+            alignSelf={'center'}
+            bg={'#d0b46b'}
+            width={200}
+            height={10}
+            marginTop={20}
+            onPress={() => navigation.navigate('CartScreen')}>
+            Add to cart
           </Button>
         </Box>
       </NativeBaseProvider>
@@ -31,21 +40,32 @@ export default PurchaseScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'flex-end',
-    justifyContent: 'flex-start',
     backgroundColor: '#d8cdb2',
   },
   cancel: {
-    marginRight: 25,
+    marginLeft: 350,
+    marginBottom: 20,
     width: 25,
     height: 25,
   },
-  text: {
-    marginTop: 325,
-    marginRight: 145,
+  image: {
+    width: '100%',
+    height: 300,
   },
-  button: {
-    marginTop: 275,
-    marginRight: 95,
+  title: {
+    fontSize: 30,
+    fontFamily: 'futura-condensedExtraBold',
+    marginLeft: 120,
+    marginTop: 20,
+    marginBottom: 10,
+  },
+  price: {
+    fontFamily: 'futura-condensedExtraBold',
+    marginLeft: 180,
+  },
+  text: {
+    margin: 15,
+    marginLeft: 30,
+    fontFamily: 'futura',
   },
 });
