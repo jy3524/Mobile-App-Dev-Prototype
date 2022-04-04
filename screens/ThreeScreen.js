@@ -13,7 +13,7 @@ const ThreeScreen = ({navigation}) => {
       <TouchableOpacity onPress={() => navigation.navigate('HomeScreen')}>
         <Image source={require('../icons/cancel.png')} style={styles.cancel} />
       </TouchableOpacity>
-      <Text style={styles.text}>3D Screen</Text>
+      <Text style={styles.text}>3D Feature - Working in progress</Text>
     </SafeAreaView>
   );
 };
@@ -33,7 +33,9 @@ const styles = StyleSheet.create({
     height: 25,
   },
   text: {
+    fontSize: 18,
+    fontFamily: 'futura',
     marginTop: 325,
-    marginRight: 160,
+    marginRight: 50,
   },
 });

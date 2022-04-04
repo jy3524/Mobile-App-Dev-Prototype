@@ -94,7 +94,7 @@ const CartScreen = ({navigation}) => {
             marginright: 22,
           }}>
           <Image
-            source={data.productImage}
+            source={data.cartImage}
             style={{
               width: '100%',
               height: '100%',
@@ -126,53 +126,54 @@ const CartScreen = ({navigation}) => {
                   fontFamily: 'futura',
                   letterSpacing: 1,
                 }}>
+                {'\u0024'}
                 {data.productPrice}
               </Text>
             </View>
+          </View>
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+            }}>
             <View
               style={{
                 flexDirection: 'row',
-                justifyContent: 'space-between',
                 alignItems: 'center',
               }}>
               <View
                 style={{
-                  flexDirection: 'row',
-                  alignItems: 'center',
+                  borderRadius: 100,
+                  marginRight: 20,
+                  padding: 4,
+                  borderWidth: 1,
+                  opacity: 0.5,
                 }}>
-                <View
+                <Image
                   style={{
-                    borderRadius: 100,
-                    marginRight: 20,
-                    padding: 4,
-                    borderWidth: 1,
-                    opacity: 0.5,
-                  }}>
-                  <Image
-                    style={{
-                      width: 15,
-                      height: 15,
-                    }}
-                    source={require('../icons/minus.png')}
-                  />
-                </View>
-                <Text>1</Text>
-                <View
+                    width: 15,
+                    height: 15,
+                  }}
+                  source={require('../icons/minus.png')}
+                />
+              </View>
+              <Text>1</Text>
+              <View
+                style={{
+                  borderRadius: 100,
+                  marginLeft: 20,
+                  padding: 4,
+                  borderWidth: 1,
+                  opacity: 0.5,
+                }}>
+                <Image
                   style={{
-                    borderRadius: 100,
-                    marginLeft: 20,
-                    padding: 4,
-                    borderWidth: 1,
-                    opacity: 0.5,
-                  }}>
-                  <Image
-                    style={{
-                      width: 15,
-                      height: 15,
-                    }}
-                    source={require('../icons/plus.png')}
-                  />
-                </View>
+                    width: 15,
+                    height: 15,
+                  }}
+                  source={require('../icons/plus.png')}
+                />
               </View>
             </View>
           </View>
@@ -191,7 +192,7 @@ const CartScreen = ({navigation}) => {
   };
 
   return (
-    <SafeAreaView style={{backgroundColor: '#d8cdb2'}}>
+    <SafeAreaView>
       <ScrollView>
         <TouchableOpacity onPress={() => navigation.navigate('HomeScreen')}>
           <Image
@@ -221,6 +222,36 @@ const CartScreen = ({navigation}) => {
         <View style={{paddingHorizontal: 16}}>
           {product ? product.map(renderProducts) : null}
         </View>
+        <View
+          style={{
+            paddingHorizontal: 16,
+            marginTop: 40,
+            marginBottom: 80,
+          }}>
+          <Text
+            style={{
+              fontSize: 20,
+              fontFamily: 'futura-condensedExtraBold',
+              letterSpacing: 1,
+              //paddingTop: 20,
+              paddingLeft: 16,
+            }}>
+            Total
+          </Text>
+          <View>
+            <Text
+              style={{
+                fontSize: 20,
+                fontFamily: 'futura-condensedExtraBold',
+                letterSpacing: 1,
+                paddingTop: 10,
+                paddingLeft: 16,
+              }}>
+              {'\u0024'}
+              {total}
+            </Text>
+          </View>
+        </View>
         <NativeBaseProvider>
           <Box>
             <Button
@@ -228,7 +259,6 @@ const CartScreen = ({navigation}) => {
               bg={'#d0b46b'}
               width={300}
               height={10}
-              marginTop={20}
               onPress={() => navigation.navigate('CartScreen')}>
               Checkout
             </Button>

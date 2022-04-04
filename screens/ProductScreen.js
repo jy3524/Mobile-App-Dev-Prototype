@@ -53,10 +53,6 @@ const ProductScreen = ({route, navigation}) => {
 
       try {
         await AsyncStorage.setItem('cartItems', JSON.stringify(array));
-        // ToastAndroid.show(
-        //   'Item added successfully to cart',
-        //   ToastAndroid.SHORT,
-        // );
         navigation.navigate('HomeScreen');
       } catch (error) {
         return error;
@@ -66,10 +62,6 @@ const ProductScreen = ({route, navigation}) => {
       array.push(id);
       try {
         await AsyncStorage.setItem('cartItems', JSON.stringify(array));
-        // ToastAndroid.show(
-        //   'Item added successfully to cart',
-        //   ToastAndroid.SHORT,
-        // );
         navigation.navigate('HomeScreen');
       } catch (error) {
         return error;
@@ -164,7 +156,7 @@ const ProductScreen = ({route, navigation}) => {
               marginLeft: 15,
               marginTop: 20,
               marginBottom: 20,
-              maxwidth: '84%',
+              maxWidth: '84%',
               maxHeight: 44,
             }}>
             {product.productName}
@@ -175,7 +167,7 @@ const ProductScreen = ({route, navigation}) => {
               marginLeft: 15,
               marginBottom: 20,
             }}>
-            {product.productPrice}
+            {'\u0024'}{product.productPrice}
           </Text>
           <Text
             style={{
