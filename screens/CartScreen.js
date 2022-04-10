@@ -10,7 +10,7 @@ import {
   View,
   TouchableOpacity,
 } from 'react-native';
-import {Box, Button, NativeBaseProvider} from 'native-base';
+import {Button, Center, NativeBaseProvider} from 'native-base';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {productData} from '../database/productData';
 
@@ -150,15 +150,17 @@ const CartScreen = ({navigation}) => {
                   borderWidth: 1,
                   opacity: 0.5,
                 }}>
-                <Image
-                  style={{
-                    width: 15,
-                    height: 15,
-                  }}
-                  source={require('../icons/minus.png')}
-                />
+                <TouchableOpacity>
+                  <Image
+                    style={{
+                      width: 15,
+                      height: 15,
+                    }}
+                    source={require('../icons/minus.png')}
+                  />
+                </TouchableOpacity>
               </View>
-              <Text>1</Text>
+              <Text>{data.qty}</Text>
               <View
                 style={{
                   borderRadius: 100,
@@ -167,13 +169,15 @@ const CartScreen = ({navigation}) => {
                   borderWidth: 1,
                   opacity: 0.5,
                 }}>
-                <Image
-                  style={{
-                    width: 15,
-                    height: 15,
-                  }}
-                  source={require('../icons/plus.png')}
-                />
+                <TouchableOpacity>
+                  <Image
+                    style={{
+                      width: 15,
+                      height: 15,
+                    }}
+                    source={require('../icons/plus.png')}
+                  />
+                </TouchableOpacity>
               </View>
             </View>
           </View>
@@ -192,7 +196,13 @@ const CartScreen = ({navigation}) => {
   };
 
   return (
-    <SafeAreaView>
+    <SafeAreaView
+      style={{
+        width: '100%',
+        height: '100%',
+        backgroundColor: '#d8cdb2',
+        position: 'relative',
+      }}>
       <ScrollView>
         <TouchableOpacity onPress={() => navigation.navigate('HomeScreen')}>
           <Image
@@ -202,25 +212,38 @@ const CartScreen = ({navigation}) => {
         </TouchableOpacity>
         <Text
           style={{
-            fontSize: 16,
-            fontFamily: 'futura-condensedExtraBold',
-            marginLeft: 145,
-          }}>
-          Order Details
-        </Text>
-        <Text
-          style={{
-            fontSize: 20,
+            fontSize: 22,
             fontFamily: 'futura-condensedExtraBold',
             letterSpacing: 1,
-            paddingTop: 20,
+            paddingTop: 5,
             paddingLeft: 16,
-            marginBottom: 10,
           }}>
           My Cart
         </Text>
         <View style={{paddingHorizontal: 16}}>
           {product ? product.map(renderProducts) : null}
+        </View>
+        <View>
+          <Text
+            style={{
+              fontSize: 22,
+              fontFamily: 'futura-condensedExtraBold',
+              letterSpacing: 1,
+              paddingTop: 10,
+              paddingLeft: 16,
+            }}>
+            Shipping Address
+          </Text>
+          <Text
+            style={{
+              fontSize: 14,
+              fontFamily: 'futura',
+              letterSpacing: 1,
+              paddingTop: 10,
+              paddingLeft: 32,
+            }}>
+            370 Jay St, Brooklyn, NY 11201
+          </Text>
         </View>
         <View
           style={{
@@ -230,10 +253,9 @@ const CartScreen = ({navigation}) => {
           }}>
           <Text
             style={{
-              fontSize: 20,
+              fontSize: 22,
               fontFamily: 'futura-condensedExtraBold',
               letterSpacing: 1,
-              //paddingTop: 20,
               paddingLeft: 16,
             }}>
             Total
@@ -241,10 +263,10 @@ const CartScreen = ({navigation}) => {
           <View>
             <Text
               style={{
-                fontSize: 20,
+                fontSize: 18,
                 fontFamily: 'futura-condensedExtraBold',
                 letterSpacing: 1,
-                paddingTop: 10,
+                paddingTop: 3,
                 paddingLeft: 16,
               }}>
               {'\u0024'}
@@ -253,16 +275,16 @@ const CartScreen = ({navigation}) => {
           </View>
         </View>
         <NativeBaseProvider>
-          <Box>
+          <Center>
             <Button
               alignSelf={'center'}
               bg={'#d0b46b'}
               width={300}
               height={10}
-              onPress={() => navigation.navigate('CartScreen')}>
+              onPress={() => navigation.navigate('ConfirmScreen')}>
               Checkout
             </Button>
-          </Box>
+          </Center>
         </NativeBaseProvider>
       </ScrollView>
     </SafeAreaView>

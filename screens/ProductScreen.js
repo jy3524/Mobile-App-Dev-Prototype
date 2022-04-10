@@ -13,7 +13,6 @@ import {
   FlatList,
   Dimensions,
   Animated,
-  ToastAndroid,
 } from 'react-native';
 import {Box, Button, NativeBaseProvider} from 'native-base';
 import {productData} from '../database/productData';

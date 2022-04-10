@@ -4,6 +4,7 @@ export const productData = [
     category: 'product',
     productName: "Men's T-shirt",
     productPrice: 45,
+    qty: 1,
     productImage: require('../assets/image0.jpg'),
     productImageList: [
       require('../assets/tshirt0.jpg'),
@@ -18,6 +19,7 @@ export const productData = [
     category: 'product',
     productName: "Women's shirt",
     productPrice: 150,
+    qty: 1,
     productImage: require('../assets/image1.jpg'),
     productImageList: [require('../assets/shirt0.jpg')],
     cartImage: require('../assets/shirt0.jpg'),
@@ -29,6 +31,7 @@ export const productData = [
     category: 'product',
     productName: "Men's Sweater",
     productPrice: 105,
+    qty: 1,
     productImage: require('../assets/image2.jpg'),
     productImageList: [require('../assets/sweater0.jpg')],
     cartImage: require('../assets/sweater0.jpg'),
