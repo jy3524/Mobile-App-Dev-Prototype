@@ -6,7 +6,6 @@ import {
   StyleSheet,
   Text,
   Image,
-  View,
   TouchableOpacity,
 } from 'react-native';
 import {Box, Button, NativeBaseProvider} from 'native-base';

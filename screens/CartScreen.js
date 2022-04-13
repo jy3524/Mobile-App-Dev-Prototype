@@ -1,6 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {
   SafeAreaView,
   ScrollView,
@@ -13,10 +13,13 @@ import {
 import {Button, Center, NativeBaseProvider} from 'native-base';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {productData} from '../database/productData';
+import RBSheet from 'react-native-raw-bottom-sheet';
 
 const CartScreen = ({navigation}) => {
   const [product, setProduct] = useState();
   const [total, setTotal] = useState(null);
+
+  const refRBSheet = useRef();
 
   useEffect(() => {
     const unsubscribe = navigation.addListener('focus', () => {
@@ -256,7 +259,7 @@ const CartScreen = ({navigation}) => {
               fontSize: 22,
               fontFamily: 'futura-condensedExtraBold',
               letterSpacing: 1,
-              paddingLeft: 16,
+              paddingLeft: 0,
             }}>
             Total
           </Text>
@@ -281,11 +284,51 @@ const CartScreen = ({navigation}) => {
               bg={'#d0b46b'}
               width={300}
               height={10}
-              onPress={() => navigation.navigate('ConfirmScreen')}>
+              onPress={() => refRBSheet.current.open()}>
               Checkout
             </Button>
           </Center>
         </NativeBaseProvider>
+        <RBSheet
+          ref={refRBSheet}
+          closeOnDragDown={true}
+          closeOnPressMask={false}
+          customStyles={{
+            container: {
+              borderTopLeftRadius: 25,
+              borderTopRightRadius: 25,
+              alignItems: 'center',
+              backgroundColor: '#cdd6b2',
+            },
+            wrapper: {
+              backgroundColor: 'transparent',
+            },
+            draggableIcon: {
+              backgroundColor: '#000000',
+            },
+          }}>
+          <Text
+            style={{
+              fontSize: 14,
+              fontFamily: 'futura',
+              letterSpacing: 1,
+              padding: 5,
+            }}>
+            Payment Info
+          </Text>
+          <NativeBaseProvider>
+            <Center>
+              <Button
+                alignSelf={'center'}
+                bg={'#d0b46b'}
+                width={300}
+                height={10}
+                onPress={() => navigation.navigate('ConfirmScreen')}>
+                Pay
+              </Button>
+            </Center>
+          </NativeBaseProvider>
+        </RBSheet>
       </ScrollView>
     </SafeAreaView>
   );
