@@ -1,6 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useCallback, useEffect, useRef, useState} from 'react';
 import {
   SafeAreaView,
   ScrollView,
@@ -10,6 +10,7 @@ import {
   View,
   TouchableOpacity,
 } from 'react-native';
+import {useFocusEffect} from '@react-navigation/native';
 import {Button, Center, NativeBaseProvider} from 'native-base';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {productData} from '../database/productData';
@@ -20,6 +21,12 @@ const CartScreen = ({navigation}) => {
   const [total, setTotal] = useState(null);
 
   const refRBSheet = useRef();
+
+  useFocusEffect(
+    useCallback(() => {
+      return () => refRBSheet.current?.close();
+    }),
+  );
 
   useEffect(() => {
     const unsubscribe = navigation.addListener('focus', () => {
@@ -292,7 +299,7 @@ const CartScreen = ({navigation}) => {
         <RBSheet
           ref={refRBSheet}
           closeOnDragDown={true}
-          closeOnPressMask={false}
+          closeOnPressMask={true}
           customStyles={{
             container: {
               borderTopLeftRadius: 25,
@@ -309,12 +316,26 @@ const CartScreen = ({navigation}) => {
           }}>
           <Text
             style={{
-              fontSize: 14,
-              fontFamily: 'futura',
+              fontSize: 18,
+              fontFamily: 'futura-condensedExtraBold',
               letterSpacing: 1,
+              marginBottom: 10,
               padding: 5,
             }}>
-            Payment Info
+            Payment Method
+          </Text>
+          <Image
+            source={require('../icons/paypal.png')}
+            style={styles.paypal}
+          />
+          <Text
+            style={{
+              position: 'absolute',
+              marginTop: 85,
+              fontFamily: 'futura',
+              fontSize: 16,
+            }}>
+            zzz1231@nyu.edu
           </Text>
           <NativeBaseProvider>
             <Center>
@@ -342,5 +363,12 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     width: 25,
     height: 25,
+  },
+  paypal: {
+    marginRight: 200,
+    marginTop: 10,
+    marginBottom: 50,
+    width: 35,
+    height: 35,
   },
 });
