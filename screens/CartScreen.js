@@ -19,8 +19,17 @@ import RBSheet from 'react-native-raw-bottom-sheet';
 const CartScreen = ({navigation}) => {
   const [product, setProduct] = useState();
   const [total, setTotal] = useState(null);
+  const [count, setCount] = useState(1);
 
   const refRBSheet = useRef();
+
+  const decrementcount = () => {
+    setCount(prevCount => prevCount - 1);
+  };
+
+  const incrementcount = () => {
+    setCount(prevCount => prevCount + 1);
+  };
 
   useFocusEffect(
     useCallback(() => {
@@ -160,7 +169,7 @@ const CartScreen = ({navigation}) => {
                   borderWidth: 1,
                   opacity: 0.5,
                 }}>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={decrementcount}>
                   <Image
                     style={{
                       width: 15,
@@ -170,7 +179,7 @@ const CartScreen = ({navigation}) => {
                   />
                 </TouchableOpacity>
               </View>
-              <Text>{data.qty}</Text>
+              <Text>{count}</Text>
               <View
                 style={{
                   borderRadius: 100,
@@ -179,7 +188,7 @@ const CartScreen = ({navigation}) => {
                   borderWidth: 1,
                   opacity: 0.5,
                 }}>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={incrementcount}>
                   <Image
                     style={{
                       width: 15,
