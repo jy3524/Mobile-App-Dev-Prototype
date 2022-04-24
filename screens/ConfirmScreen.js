@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import React from 'react';
+import React, {useState} from 'react';
 import {
   SafeAreaView,
   ScrollView,
@@ -9,8 +9,16 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import {Box, Button, NativeBaseProvider} from 'native-base';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const ConfirmScreen = ({navigation}) => {
+  const [count, setCount] = useState(145463);
+
+  const onClick = () => {
+    navigation.navigate('HomeScreen');
+    setCount(prevCount => prevCount + 1);
+  };
+
   return (
     <SafeAreaView
       style={{
@@ -35,7 +43,7 @@ const ConfirmScreen = ({navigation}) => {
             marginTop: 200,
           }}>
           Your order has been successfully submitted! Thank you for supporting
-          sustainable fashion business. Your order number is #674356.
+          sustainable fashion business. Your order number is #{count}.
         </Text>
         <NativeBaseProvider>
           <Box>
@@ -45,7 +53,7 @@ const ConfirmScreen = ({navigation}) => {
               width={300}
               height={10}
               marginTop={200}
-              onPress={() => navigation.navigate('HomeScreen')}>
+              onPress={onClick}>
               Continue Shopping
             </Button>
           </Box>

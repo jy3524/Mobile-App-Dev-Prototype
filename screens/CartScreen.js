@@ -19,17 +19,8 @@ import RBSheet from 'react-native-raw-bottom-sheet';
 const CartScreen = ({navigation}) => {
   const [product, setProduct] = useState();
   const [total, setTotal] = useState(null);
-  const [count, setCount] = useState(1);
 
   const refRBSheet = useRef();
-
-  const decrementcount = () => {
-    setCount(prevCount => prevCount - 1);
-  };
-
-  const incrementcount = () => {
-    setCount(prevCount => prevCount + 1);
-  };
 
   useFocusEffect(
     useCallback(() => {
@@ -65,6 +56,7 @@ const CartScreen = ({navigation}) => {
   };
 
   const getTotal = productData1 => {
+    // eslint-disable-next-line no-shadow
     let total = 0;
     for (let i = 0; i < productData1.length; i++) {
       let productPrice = productData1[i].productPrice;
@@ -169,7 +161,7 @@ const CartScreen = ({navigation}) => {
                   borderWidth: 1,
                   opacity: 0.5,
                 }}>
-                <TouchableOpacity onPress={decrementcount}>
+                <TouchableOpacity>
                   <Image
                     style={{
                       width: 15,
@@ -179,7 +171,7 @@ const CartScreen = ({navigation}) => {
                   />
                 </TouchableOpacity>
               </View>
-              <Text>{count}</Text>
+              <Text>{data.qty}</Text>
               <View
                 style={{
                   borderRadius: 100,
@@ -188,7 +180,7 @@ const CartScreen = ({navigation}) => {
                   borderWidth: 1,
                   opacity: 0.5,
                 }}>
-                <TouchableOpacity onPress={incrementcount}>
+                <TouchableOpacity>
                   <Image
                     style={{
                       width: 15,
@@ -337,6 +329,7 @@ const CartScreen = ({navigation}) => {
             source={require('../icons/paypal.png')}
             style={styles.paypal}
           />
+          <Image source={require('../icons/radio.png')} style={styles.radio} />
           <Text
             style={{
               position: 'absolute',
@@ -374,10 +367,17 @@ const styles = StyleSheet.create({
     height: 25,
   },
   paypal: {
+    position: 'relative',
     marginRight: 200,
     marginTop: 10,
     marginBottom: 50,
     width: 35,
     height: 35,
+  },
+  radio: {
+    position: 'absolute',
+    marginRight: 200,
+    left: 280,
+    top: 85,
   },
 });
