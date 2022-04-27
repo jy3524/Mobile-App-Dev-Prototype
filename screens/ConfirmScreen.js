@@ -12,26 +12,26 @@ import {Box, Button, NativeBaseProvider} from 'native-base';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const ConfirmScreen = ({navigation}) => {
-  const [count, setCount] = useState(5435);
+  const [count, setCount] = useState(0);
 
   useEffect(() => {
     if (count !== 0) {
-      AsyncStorage.setItem('count', `${count}`);
+      AsyncStorage.setItem('addcount', `${count}`);
     }
   }, [count]);
 
   useEffect(() => {
-    AsyncStorage.getItem('count').then(value => {
+    AsyncStorage.getItem('addcount').then(value => {
       if (value) {
         // eslint-disable-next-line radix
         setCount(parseInt(value));
       }
     });
-  }, []);
+  });
 
   const onClick = () => {
     navigation.navigate('HomeScreen');
-    setCount(prevCount => prevCount + 1);
+    setCount(value => value + 1);
   };
 
   return (
