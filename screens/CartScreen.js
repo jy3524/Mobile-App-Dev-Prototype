@@ -74,11 +74,26 @@ const CartScreen = ({navigation}) => {
         if (array[i] === id) {
           array.splice(i, 1);
         }
-        await AsyncStorage.setItem('cartItems', JSON.stringify(array));
-        getDataFromDB();
       }
+      await AsyncStorage.setItem('cartItems', JSON.stringify(array));
+      getDataFromDB();
     }
   };
+
+  // const updateQty = async (id, qty) => {
+  //   let itemArray = await AsyncStorage.getItem('cartItems');
+  //   itemArray = JSON.parse(itemArray);
+  //   if (itemArray) {
+  //     let array = itemArray;
+  //     for (let i = 0; i < array.length; i++) {
+  //       if (array[i] === id) {
+  //         array[i].qty = qty;
+  //       }
+  //     }
+  //     await AsyncStorage.setItem('cartItems', JSON.stringify(array));
+  //     getDataFromDB();
+  //   }
+  // };
 
   const renderProducts = (data, index) => {
     return (
@@ -162,6 +177,7 @@ const CartScreen = ({navigation}) => {
                   opacity: 0.5,
                 }}>
                 <TouchableOpacity>
+                  {/* onPress={() => updateQty(data.id, data.qty - 1)}> */}
                   <Image
                     style={{
                       width: 15,
@@ -181,6 +197,7 @@ const CartScreen = ({navigation}) => {
                   opacity: 0.5,
                 }}>
                 <TouchableOpacity>
+                  {/* onPress={() => updateQty(data.id, data.qty + 1)}> */}
                   <Image
                     style={{
                       width: 15,
